@@ -1,0 +1,109 @@
+/* ===== רשימות ומשימות ===== */
+
+.todos-screen { display: grid; grid-template-columns: 350px 1fr; gap: 26px; align-items: start; }
+
+.lists-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  background: var(--sand-100);
+}
+.lists-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.lists { display: flex; flex-direction: column; gap: 10px; }
+
+.list-card {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  transition: box-shadow 0.2s, transform 0.2s var(--ease);
+  animation: fade-up 0.35s var(--ease) both;
+}
+.list-card:hover { box-shadow: var(--shadow-sm); transform: translateX(-2px); }
+.list-card.editing { padding: 12px; }
+.list-link { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border-radius: inherit; }
+.list-link.active { background: var(--olive-100); box-shadow: inset -4px 0 0 var(--olive-700); }
+.list-title { font-weight: 700; padding-left: 70px; }
+.list-card .card-actions { position: absolute; top: 8px; left: 8px; opacity: 0; transition: opacity 0.2s; }
+.list-card:hover .card-actions, .list-card .card-actions:focus-within { opacity: 1; }
+.list-card .icon-btn { width: 30px; height: 30px; }
+
+/* פס התקדמות */
+.progress { display: flex; align-items: center; gap: 10px; }
+.progress-track { flex: 1; height: 8px; overflow: hidden; border-radius: 999px; background: var(--sand-200); }
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--olive-400), var(--olive-700));
+  transition: width 0.5s var(--ease);
+}
+.progress-fill.full { background: linear-gradient(90deg, var(--gold), var(--clay)); }
+.progress-text { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+.progress.large .progress-track { height: 12px; }
+.progress.large .progress-text { font-size: 1rem; font-weight: 600; color: var(--olive-700); }
+
+/* תבניות ברשימה חדשה */
+.templates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+.template {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  text-align: center;
+  transition: all 0.2s;
+}
+.template span { color: var(--muted); font-size: 0.85rem; }
+.template:hover { border-color: var(--olive-400); }
+.template.active { border-color: var(--olive-700); background: var(--olive-100); }
+
+/* הרשימה הפתוחה */
+.list-area { min-width: 0; }
+.list-view { animation: fade-up 0.35s var(--ease); }
+.list-view-header { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.list-view-header h2 { font-size: 1.9rem; }
+.add-todo { margin-bottom: 14px; padding: 12px; border: 1.5px dashed var(--sand-300); border-radius: var(--radius); }
+
+.todo-list { display: flex; flex-direction: column; gap: 8px; }
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  transition: background 0.25s, opacity 0.25s;
+}
+.todo-item .row-actions { margin-inline-start: auto; opacity: 0; transition: opacity 0.2s; }
+.todo-item:hover .row-actions, .todo-item .row-actions:focus-within { opacity: 1; }
+.todo-item .icon-btn { width: 30px; height: 30px; }
+.todo-id { color: var(--muted); font-size: 0.85rem; min-width: 34px; }
+.todo-title { flex: 1; cursor: text; transition: color 0.25s; }
+.todo-item.done { background: var(--sand-50); }
+.todo-item.done .todo-title { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--olive-400); }
+
+/* תיבת סימון מעוצבת */
+.check { position: relative; display: grid; cursor: pointer; }
+.check input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.check-box {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--olive-400);
+  border-radius: 8px;
+  background: #fff;
+  color: transparent;
+  transition: all 0.2s var(--ease);
+}
+.check input:checked + .check-box { background: var(--olive-700); border-color: var(--olive-700); color: #fff; transform: scale(1.05); }
+.check input:focus-visible + .check-box { box-shadow: 0 0 0 3px rgba(86, 105, 74, 0.25); }
+
+@media (max-width: 900px) {
+  .todos-screen { grid-template-columns: 1fr; }
+}

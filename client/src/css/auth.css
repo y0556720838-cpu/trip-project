@@ -1,0 +1,35 @@
+/* ===== כניסה, הרשמה והשלמת פרטים ===== */
+
+.auth-card {
+  width: min(430px, calc(100% - 32px));
+  margin: 8vh auto;
+  padding: 30px 32px 34px;
+  border-radius: var(--radius-lg);
+  background: rgba(252, 249, 243, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  animation: pop-in 0.4s var(--ease);
+}
+.auth-logo { height: 84px; margin: 0 auto 10px; }
+
+.auth-card h1 { margin-bottom: 22px; font-size: 1.8rem; }
+.auth-card h1::after {
+  content: '';
+  display: block;
+  width: 46px;
+  height: 4px;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  background: var(--clay);
+}
+.auth-card .form { text-align: right; }
+.auth-card .form-actions .btn { flex: 1; }
+
+.auth-card > a {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--olive-600);
+  font-weight: 600;
+}
+.auth-card > a:hover { text-decoration: underline; }

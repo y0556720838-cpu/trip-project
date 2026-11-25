@@ -1,0 +1,77 @@
+/* ===== פוסטים ותגובות ===== */
+
+.tabs { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--sand-100); }
+.tabs a { padding: 8px 18px; border-radius: 999px; font-weight: 600; color: var(--muted); transition: all 0.2s; }
+.tabs a:hover { color: var(--olive-900); }
+.tabs a.active { background: #fff; color: var(--olive-900); box-shadow: var(--shadow-sm); }
+
+/* רשימה מימין, הפוסט הפתוח משמאל */
+.posts-layout { display: grid; grid-template-columns: 380px 1fr; gap: 26px; align-items: start; }
+
+.post-list { display: flex; flex-direction: column; gap: 12px; }
+.post-item {
+  display: flex;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  transition: box-shadow 0.25s, transform 0.25s var(--ease), border-color 0.25s;
+  animation: fade-up 0.35s var(--ease) both;
+}
+.post-item:hover { box-shadow: var(--shadow-sm); transform: translateX(-3px); }
+.post-item.active { border-color: var(--olive-600); background: var(--olive-100); box-shadow: inset -4px 0 0 var(--olive-700); }
+.post-item img { width: 92px; height: 92px; flex-shrink: 0; border-radius: 12px; object-fit: cover; }
+.post-item-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.post-item h3 { font-size: 1.08rem; }
+.post-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; color: var(--muted); font-size: 0.86rem; }
+
+/* חלונית הקריאה - נשארת במקום בזמן גלילת הרשימה בתוך הפאנל */
+.reading-pane {
+  position: sticky;
+  top: 0;
+  max-height: calc(100vh - 300px);   /* בערך גובה הכותרת, הסרגל והריווחים */
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line);
+}
+
+.post-details { animation: fade-up 0.35s var(--ease); }
+.post-hero { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.post-details > header { padding: 24px 34px 0; }
+.post-details h2 { margin: 2px 0 8px; font-size: 2.1rem; font-weight: 900; }
+.post-details .post-meta { font-size: 0.95rem; }
+.post-details .post-meta strong { color: var(--olive-900); }
+.post-actions { display: flex; gap: 8px; margin-top: 14px; }
+
+.post-body { padding: 20px 34px 10px; font-size: 1.12rem; line-height: 1.85; }
+.post-body p + p { margin-top: 16px; }
+.post-body p:first-child::first-letter { font-family: var(--font-display); font-size: 1.4em; font-weight: 700; color: var(--clay); }
+
+.post-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; padding: 10px 34px; }
+.post-gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius); }
+
+.comments-toggle { margin: 16px 34px 24px; }
+
+.comments { padding: 0 34px 30px; }
+.comments h3 { margin-bottom: 14px; }
+.comments ul { display: flex; flex-direction: column; gap: 12px; }
+.comment {
+  padding: 14px 16px;
+  border-radius: 4px var(--radius) var(--radius) var(--radius);
+  background: var(--sand-100);
+  animation: fade-up 0.3s var(--ease) both;
+}
+.comment.mine { background: var(--olive-100); }
+.comment header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.comment header strong { color: var(--olive-900); }
+.comment .row-actions { margin-inline-start: auto; }
+.comment .icon-btn { width: 28px; height: 28px; background: rgba(255, 255, 255, 0.7); }
+.add-comment { margin-top: 18px; }
+.add-comment textarea { min-height: 80px; }
+
+@media (max-width: 960px) {
+  .posts-layout { grid-template-columns: 1fr; }
+  .reading-pane { position: static; max-height: none; }
+}
