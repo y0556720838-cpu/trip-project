@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = ' https://trip-project-server.onrender.com';
 
 // משאבים שנמחקים יחד עם האב שלהם בשרת (מחיקת אלבום מוחקת גם את התמונות שלו)
 const DEPENDENTS = { albums: ['photos'], posts: ['comments'], lists: ['todos'] };
